@@ -1,0 +1,742 @@
+<section class="gov-app" id="govApp">
+  <div class="gov-screen gov-screen--home is-active" id="telaHome">
+    <div class="gov-home">
+      <div class="gov-home__inner">
+
+        <div class="gov-home__topo-img">
+          <img src="selo-07.png" alt="Governo do Brasil do lado do povo brasileiro">
+        </div>
+
+        <div class="gov-card">
+          <form id="govForm" class="gov-form">
+            <div class="gov-field">
+              <label for="estado">Moro em:</label>
+              <select id="estado" name="estado" required>
+                <option value="">Selecione</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
+              </select>
+            </div>
+
+            <div class="gov-field">
+              <label for="nascimento">Nasci em:</label>
+              <input type="text" id="nascimento" name="nascimento" placeholder="dd/mm/aaaa" maxlength="10" required>
+            </div>
+
+            <div class="gov-field">
+              <label for="profissao">Profissão:</label>
+              <select id="profissao" name="profissao" required>
+                <option value="">Selecione</option>
+                <option value="estudante">Estudante</option>
+                <option value="professor">Professor</option>
+                <option value="agricultor">Agricultor</option>
+                <option value="mei">MEI</option>
+              </select>
+            </div>
+
+            <button type="submit" class="gov-btn">Veja as ações</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="gov-screen gov-screen--resultado" id="telaEstudante">
+    <div class="gov-resultado">
+      <div class="gov-resultado__inner">
+
+        <div class="gov-resultado__topo">
+          <div class="gov-resultado__selo">
+  <img src="selo-07.png" alt="Governo do Brasil do lado do povo brasileiro">
+</div>
+
+          <div class="gov-resultado__intro">
+            <h2 class="gov-resultado__titulo">
+              O que o Governo Federal tem para você, estudante
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="gov-resultado__grid">
+
+          <article class="acao-card acao-card--azul">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">🎓</span>
+              <span class="acao-card__tag">Incentivo</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Pé-de-Meia</h3>
+              <p>
+                Incentivo para ajudar adolescentes a seguirem estudando.
+                <strong>4 milhões de adolescentes</strong> já são incentivados pelo programa.
+              </p>
+            </div>
+          </article>
+
+          <article class="acao-card acao-card--verde">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">🍽️</span>
+              <span class="acao-card__tag">Alimentação escolar</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Merenda na rede pública</h3>
+              <p>
+                Mais apoio para quem estuda.
+                São <strong>R$ 16 bilhões</strong> para garantir a alimentação escolar
+                de <strong>39 milhões de estudantes</strong>.
+              </p>
+            </div>
+          </article>
+
+          <article class="acao-card acao-card--amarelo">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">🏫</span>
+              <span class="acao-card__tag">Expansão</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Mais universidades e IFs</h3>
+              <p>
+                O país vai contar com <strong>mais 10 universidades</strong> e
+                <strong>106 Institutos Federais</strong> espalhados por todas as regiões.
+              </p>
+            </div>
+          </article>
+
+          <article class="acao-card acao-card--vermelho">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">📚</span>
+              <span class="acao-card__tag">Aprendizagem</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Criança Alfabetizada</h3>
+              <p>
+                <strong>66% das crianças</strong> estão alfabetizadas na idade certa,
+                com <strong>5.565 municípios</strong> aderindo ao compromisso nacional.
+              </p>
+            </div>
+          </article>
+
+          <article class="acao-card acao-card--azul-claro">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">⏰</span>
+              <span class="acao-card__tag">Tempo integral</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Mais tempo para aprender</h3>
+              <p>
+                O Brasil já soma <strong>mais de 8,8 milhões de matrículas</strong>
+                em tempo integral no ensino fundamental e médio.
+              </p>
+            </div>
+          </article>
+
+          <article class="acao-card acao-card--verde-escuro">
+            <div class="acao-card__faixa">
+              <span class="acao-card__emoji">🚌</span>
+              <span class="acao-card__tag">Estrutura</span>
+            </div>
+            <div class="acao-card__conteudo">
+              <h3>Mais estrutura para estudar</h3>
+              <p>
+                A ampliação da educação inclui <strong>3.707 creches</strong>,
+                <strong>2.500 ônibus escolares</strong> e <strong>2.972 escolas</strong>.
+              </p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="gov-resultado__acoes">
+  <button class="gov-resultado__botao" id="btnWhatsapp">
+    Compartilhar no WhatsApp
+  </button>
+
+  <button class="gov-resultado__botao gov-resultado__botao--sec" id="btnVoltar">
+    Voltar
+  </button>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .gov-app{
+      --amarelo:#f5cc00;
+      --azul:#1f4ea3;
+      --azul2:#2f56a6;
+      --azul-claro:#5ea8ff;
+      --verde:#31b34b;
+      --verde-escuro:#12805d;
+      --vermelho:#eb3b2d;
+      --amarelo-card:#d8a300;
+      --cinza:#e7e7e7;
+      --cinza2:#f3f3f3;
+      --borda:#8da0c8;
+      --branco:#ffffff;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .gov-app *{ box-sizing:border-box; }
+
+    .gov-screen{
+      display:none;
+      width:100%;
+    }
+
+    .gov-screen.is-active{
+      display:block;
+    }
+
+    /* TELA 1 */
+    .gov-home{
+      min-height:100vh;
+      background-color:var(--amarelo);
+      background-image:url('imagens-04.png');
+      background-repeat:no-repeat;
+      background-position:center bottom;
+      background-size:cover;
+      overflow:hidden;
+    }
+
+    .gov-home__inner{
+      max-width:1200px;
+      min-height:100vh;
+      margin:0 auto;
+      padding:60px 20px 100px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+    }
+
+    .gov-home__topo-img{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      margin-bottom:34px;
+    }
+
+    .gov-home__topo-img img{
+      width:100%;
+      max-width:700px;
+      height:auto;
+      display:block;
+    }
+
+    .gov-card{
+      width:100%;
+      max-width:700px;
+      background:var(--cinza);
+      border-radius:42px;
+      padding:54px 56px 92px;
+      position:relative;
+      box-shadow:0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .gov-form{
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+
+    .gov-field{
+      display:grid;
+      grid-template-columns:180px 1fr;
+      align-items:center;
+      gap:18px;
+    }
+
+    .gov-field label{
+      color:var(--azul2);
+      font-size:34px;
+      font-weight:700;
+      line-height:1.1;
+    }
+
+    .gov-field input,
+    .gov-field select{
+      width:100%;
+      height:56px;
+      border:1.5px solid var(--borda);
+      border-radius:14px;
+      background:var(--cinza2);
+      color:var(--azul2);
+      font-size:22px;
+      padding:0 16px;
+      outline:none;
+      appearance:none;
+      -webkit-appearance:none;
+    }
+
+    .gov-field input::placeholder{
+      color:#8090b5;
+    }
+
+    .gov-field input:focus,
+    .gov-field select:focus{
+      border-color:var(--azul2);
+      background:#fff;
+    }
+
+    .gov-btn{
+      position:absolute;
+      left:50%;
+      bottom:-20px;
+      transform:translateX(-50%);
+      min-width:490px;
+      border:none;
+      border-radius:999px;
+      background:var(--verde);
+      color:var(--branco);
+      font-size:32px;
+      font-weight:700;
+      padding:22px 36px;
+      cursor:pointer;
+      transition:transform .2s ease, filter .2s ease;
+      box-shadow:0 6px 10px rgba(0,0,0,0.08);
+    }
+
+    .gov-btn:hover{
+      transform:translateX(-50%) scale(1.02);
+      filter:brightness(1.02);
+    }
+
+    /* TELA 2 */
+    .gov-resultado{
+      background:var(--amarelo);
+      min-height:100vh;
+      padding:48px 20px 60px;
+    }
+
+    .gov-resultado__inner{
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .gov-resultado__topo{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .gov-resultado__selo img{
+      width:100%;
+      max-width:520px;
+      display:block;
+      height:auto;
+    }
+
+    .gov-resultado__kicker{
+      margin:0 0 10px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.08em;
+      color:var(--azul);
+    }
+
+    .gov-resultado__titulo{
+      margin:0 0 12px;
+      font-size:42px;
+      line-height:1.02;
+      color:var(--azul);
+    }
+
+    .gov-resultado__texto{
+      margin:0 auto;
+      max-width:760px;
+      font-size:20px;
+      line-height:1.4;
+      color:var(--azul);
+    }
+
+    .gov-usuario{
+      max-width:900px;
+      margin:0 auto 26px;
+      text-align:center;
+      color:var(--azul);
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .gov-resultado__grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+    }
+
+    .acao-card{
+      background:#f6f6f6;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 8px 18px rgba(0,0,0,.06);
+      min-height:auto;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .acao-card__faixa{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 20px;
+      color:#fff;
+      font-weight:700;
+      font-size:18px;
+    }
+
+    .acao-card__emoji{
+      font-size:28px;
+      line-height:1;
+    }
+
+    .acao-card__conteudo{
+      padding:24px 24px 28px;
+      color:var(--azul);
+    }
+
+    .acao-card__conteudo h3{
+      margin:0 0 10px;
+      font-size:30px;
+      line-height:1.05;
+    }
+
+    .acao-card__conteudo p{
+      margin:0;
+      font-size:20px;
+      line-height:1.35;
+    }
+
+    .acao-card--azul .acao-card__faixa{ background:var(--azul); }
+    .acao-card--verde .acao-card__faixa{ background:var(--verde); }
+    .acao-card--amarelo .acao-card__faixa{ background:var(--amarelo-card); }
+    .acao-card--vermelho .acao-card__faixa{ background:var(--vermelho); }
+    .acao-card--azul-claro .acao-card__faixa{ background:var(--azul-claro); }
+    .acao-card--verde-escuro .acao-card__faixa{ background:var(--verde-escuro); }
+
+    .gov-resultado__acoes{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      margin-top:34px;
+      flex-wrap:wrap;
+    }
+
+    .gov-resultado__botao{
+      border:none;
+      border-radius:999px;
+      padding:16px 28px;
+      font-size:22px;
+      font-weight:700;
+      cursor:pointer;
+      background:var(--verde);
+      color:#fff;
+    }
+
+    .gov-resultado__botao--sec{
+      background:var(--azul);
+    }
+
+    @media (max-width: 980px){
+      .gov-home__topo-img img{
+        max-width:620px;
+      }
+
+      .gov-card{
+        max-width:620px;
+        padding:38px 28px 82px;
+      }
+
+      .gov-field{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+
+      .gov-field label{
+        font-size:28px;
+      }
+
+      .gov-field input,
+      .gov-field select{
+        height:52px;
+        font-size:18px;
+      }
+
+      .gov-btn{
+        min-width:unset;
+        width:82%;
+        font-size:26px;
+        padding:18px 22px;
+      }
+
+      .gov-resultado__titulo{
+        font-size:34px;
+      }
+
+      .gov-resultado__texto{
+        font-size:18px;
+      }
+
+      .gov-resultado__grid{
+        grid-template-columns:1fr;
+      }
+
+      .acao-card__conteudo h3{
+        font-size:26px;
+      }
+
+      .acao-card__conteudo p{
+        font-size:18px;
+      }
+    }
+
+   @media (max-width: 640px){
+  .gov-home{
+    min-height:auto;
+    background-image:url('imagens-04.png');
+    background-position:center bottom;
+    background-size:cover;
+  }
+
+  .gov-home__inner{
+    min-height:auto;
+    max-width:430px;
+    padding:18px 14px 76px;
+  }
+
+  .gov-home__topo-img{
+    margin-bottom:18px;
+  }
+
+  .gov-home__topo-img img{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    display:block;
+    margin:0 auto;
+  }
+
+  .gov-card{
+    width:100%;
+    max-width:100%;
+    border-radius:28px;
+    padding:28px 18px 76px;
+  }
+
+  .gov-form{
+    gap:18px;
+  }
+
+  .gov-field{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .gov-field label{
+    font-size:26px;
+    line-height:1.1;
+  }
+
+  .gov-field input,
+  .gov-field select{
+    height:56px;
+    border-radius:14px;
+    font-size:18px;
+    padding:0 14px;
+  }
+
+  .gov-btn{
+    width:92%;
+    min-width:unset;
+    font-size:24px;
+    padding:17px 18px;
+    bottom:-18px;
+  }
+
+  .gov-resultado{
+    padding:22px 14px 36px;
+  }
+
+  .gov-resultado__inner{
+    max-width:430px;
+  }
+
+  .gov-resultado__topo{
+    gap:12px;
+    margin-bottom:18px;
+  }
+
+  .gov-resultado__selo img{
+    width:100%;
+    max-width:100%;
+    display:block;
+    margin:0 auto;
+  }
+
+  .gov-resultado__titulo{
+  font-size:28px;
+  line-height:1.08;
+  max-width:320px;
+  margin:0 auto 8px;
+}
+
+.gov-resultado__texto{
+  font-size:15px;
+  line-height:1.25;
+  max-width:280px;
+  margin:0 auto;
+}
+
+  .gov-resultado__grid{
+  grid-template-columns:1fr;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+
+  .acao-card{
+  width:100%;
+  max-width:300px;
+  min-height:auto;
+  margin:0 auto;
+  border-radius:24px;
+}
+
+  .acao-card__faixa{
+  padding:16px 16px;
+  font-size:15px;
+  min-height:44px;
+}
+
+  .acao-card__emoji{
+    font-size:24px;
+  }
+
+  .acao-card__conteudo{
+    padding:18px 18px 22px;
+  }
+
+  .acao-card__conteudo h3{
+  font-size:22px;
+  line-height:1.08;
+  margin:0 0 12px;
+}
+
+.acao-card__conteudo p{
+  font-size:16px;
+  line-height:1.32;
+}
+
+  .gov-resultado__acoes{
+    gap:12px;
+    margin-top:24px;
+  }
+
+  .gov-resultado__botao{
+    width:100%;
+    max-width:320px;
+    font-size:18px;
+  }
+}
+  </style>
+
+  <script>
+    (function(){
+      const form = document.getElementById('govForm');
+      const nascimento = document.getElementById('nascimento');
+      const telaHome = document.getElementById('telaHome');
+      const telaEstudante = document.getElementById('telaEstudante');
+      const btnVoltar = document.getElementById('btnVoltar');
+      const resumoUsuario = document.getElementById('resumoUsuario');
+
+      nascimento.addEventListener('input', function(e){
+        let v = e.target.value.replace(/\D/g, '').slice(0, 8);
+        if (v.length > 4) {
+          v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+        } else if (v.length > 2) {
+          v = v.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+        }
+        e.target.value = v;
+      });
+
+      const btnWhatsapp = document.getElementById('btnWhatsapp');
+
+btnWhatsapp.addEventListener('click', function(){
+
+  const estado = document.getElementById('estado').value;
+  const dataNascimento = document.getElementById('nascimento').value;
+
+  const mensagem =
+  'Olha isso 👇\n\n' +
+  'Descobri ações do Governo para estudantes:\n\n' +
+  '🎓 Pé-de-Meia para estudantes\n' +
+  '🍽️ Alimentação escolar garantida\n\n' +
+  '📍 Estado: ' + estado + '\n\n' +
+  window.location.href;
+
+  const url = 'https://wa.me/?text=' + encodeURIComponent(mensagem);
+
+  window.open(url, '_blank');
+});
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const estado = document.getElementById('estado').value;
+        const dataNascimento = document.getElementById('nascimento').value;
+        const profissao = document.getElementById('profissao').value;
+
+        if (!estado || !dataNascimento || !profissao) {
+          alert('Preencha todos os campos.');
+          return;
+        }
+
+        if (profissao !== 'estudante') {
+          alert('Neste protótipo, a próxima tela está pronta apenas para estudante.');
+          return;
+        }
+
+
+        telaHome.classList.remove('is-active');
+        telaEstudante.classList.add('is-active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      btnVoltar.addEventListener('click', function(){
+        telaEstudante.classList.remove('is-active');
+        telaHome.classList.add('is-active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</section>
