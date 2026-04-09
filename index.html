@@ -993,8 +993,7 @@
         tituloResultado.textContent =
           perfilInfo.tituloResultado || 'O que o Governo Federal tem para você';
 
-        subtituloResultado.textContent =
-          `${perfilInfo.subtitulo || ''} Estado informado: ${estado}. Conteúdo de referência nacional com base na idade de ${idade} anos.`;
+        subtituloResultado.textContent = '';
 
         ultimoResultado = { perfil, estado, idade, cards };
       }
