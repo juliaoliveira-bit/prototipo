@@ -80,7 +80,7 @@
 
           <div class="gov-resultado__intro">
             <h2 class="gov-resultado__titulo" id="tituloResultado">
-              O que o Governo Federal <br> tem para você
+              O que o Governo Federal tem para você
             </h2>
             <p class="gov-resultado__sub" id="subtituloResultado"></p>
           </div>
@@ -242,6 +242,10 @@
       transform:translateX(-50%) scale(1.02);
       filter:brightness(1.02);
     }
+
+    .gov-resultado__sub:empty{
+  display:none;
+}
 
     .gov-resultado{
       background:var(--amarelo);
@@ -589,6 +593,7 @@
 {
   "perfis": {
     "estudante": {
+      "emojiPerfil": "🎓",
       "tituloResultado": "O que o Governo Federal tem para você, estudante",
       "tituloCompartilhamento": "Descobri ações do Governo para estudantes:",
       "subtitulo": "Selecionamos ações de educação, permanência na escola e ampliação de oportunidades.",
@@ -638,6 +643,7 @@
       ]
     },
     "trabalhador": {
+      "emojiPerfil": "💼",
       "tituloResultado": "O que o Governo Federal tem para você, trabalhador",
       "tituloCompartilhamento": "Descobri ações do Governo para trabalhadores:",
       "subtitulo": "Ações voltadas à renda, emprego e alívio no orçamento.",
@@ -673,6 +679,7 @@
       ]
     },
     "agricultor": {
+      "emojiPerfil": "🌱",
       "tituloResultado": "O que o Governo Federal tem para você, agricultor",
       "tituloCompartilhamento": "Descobri ações do Governo para agricultores:",
       "subtitulo": "Ações voltadas ao campo, produção e crédito.",
@@ -715,6 +722,7 @@
       ]
     },
     "mulher": {
+      "emojiPerfil": "👩",
       "tituloResultado": "O que o Governo Federal tem para você, mulher",
       "tituloCompartilhamento": "Descobri ações do Governo para mulheres:",
       "subtitulo": "Proteção, saúde e políticas públicas para mulheres.",
@@ -731,7 +739,7 @@
           "emoji": "🏠",
           "cor": "azul",
           "titulo": "Mulher Segura",
-          "texto": "Rede nacional com <strong>27 salas</strong> e <strong>R$ 28 milhões</strong> em investimento."
+          "texto": "Rede nacional com <strong>27 salas</strong> e R$ 28 milhões em investimento."
         },
         {
           "tag": "Saúde",
@@ -750,6 +758,7 @@
       ]
     },
     "motorista": {
+       "emojiPerfil": "🪪",
       "tituloResultado": "O que o Governo Federal tem para você, motorista",
       "tituloCompartilhamento": "Descobri ações do Governo para motoristas:",
       "subtitulo": "Facilidade, economia e mobilidade.",
@@ -778,6 +787,7 @@
       ]
     },
     "geral": {
+        "emojiPerfil": "🇧🇷",
       "tituloResultado": "O que o Governo Federal tem para você",
       "tituloCompartilhamento": "Descobri ações do Governo para a população:",
       "subtitulo": "Principais ações que impactam o dia a dia da população.",
@@ -1006,13 +1016,15 @@
           .map(card => `• ${card.titulo}`)
           .join('\n');
 
-        const mensagem =
-          'Olha isso 👇\n\n' +
-          (GOV_DATA.perfis[ultimoResultado.perfil]?.tituloCompartilhamento || 'Descobri ações do Governo') +
-          '\n\n' +
+        const perfilInfo = GOV_DATA.perfis[ultimoResultado.perfil];
+
+const mensagem =
+  `${perfilInfo.emojiPerfil || '📢'} ` +
+  (perfilInfo.tituloCompartilhamento || 'Descobri ações do Governo') +
+  '\n\n' +
           topCards +
           '\n\n' +
-          '📍 Estado: ' + ultimoResultado.estado + '\n' 
+          '📍 Estado: ' + ultimoResultado.estado + '\n' +
           'Acesse: ' + urlAtual;
 
         const url = 'https://wa.me/?text=' + encodeURIComponent(mensagem);
