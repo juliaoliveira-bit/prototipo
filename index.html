@@ -875,196 +875,239 @@
 }
 </script>
 
-  <script>
-    (function(){
+<script>
+(function(){
 
-      const form = document.getElementById('govForm');
-      const nascimento = document.getElementById('nascimento');
-      const telaHome = document.getElementById('telaHome');
-      const telaResultado = document.getElementById('telaResultado');
-      const btnVoltar = document.getElementById('btnVoltar');
-      const btnWhatsapp = document.getElementById('btnWhatsapp');
-      const cardsContainer = document.getElementById('cardsContainer');
-      const tituloResultado = document.getElementById('tituloResultado');
-      const subtituloResultado = document.getElementById('subtituloResultado');
+  const form = document.getElementById('govForm');
+  const nascimento = document.getElementById('nascimento');
+  const telaHome = document.getElementById('telaHome');
+  const telaResultado = document.getElementById('telaResultado');
+  const btnVoltar = document.getElementById('btnVoltar');
+  const btnWhatsapp = document.getElementById('btnWhatsapp');
+  const cardsContainer = document.getElementById('cardsContainer');
+  const tituloResultado = document.getElementById('tituloResultado');
+  const subtituloResultado = document.getElementById('subtituloResultado');
 
-      let ultimoResultado = {
-        perfil: '',
-        estado: '',
-        idade: 0,
-        cards: []
-      };
+  let ultimoResultado = {
+    perfil: '',
+    estado: '',
+    idade: 0,
+    cards: []
+  };
 
-      function getGovData(){
-        const raw = document.getElementById('govDataJson').textContent.trim();
-        return JSON.parse(raw);
-      }
+  function getGovData(){
+    try {
+      const raw = document.getElementById('govDataJson').textContent.trim();
+      return JSON.parse(raw);
+    } catch(e){
+      console.error('Erro no JSON', e);
+      return { perfis:{}, faixasEtarias:{} };
+    }
+  }
 
-      const GOV_DATA = getGovData();
+  const GOV_DATA = getGovData();
 
-      nascimento.addEventListener('input', function(e){
-        let v = e.target.value.replace(/\D/g, '').slice(0, 8);
+  // máscara de data
+  nascimento.addEventListener('input', function(e){
+    let v = e.target.value.replace(/\D/g, '').slice(0, 8);
 
-        if (v.length > 4) {
-          v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
-        } else if (v.length > 2) {
-          v = v.replace(/(\d{2})(\d{0,2})/, '$1/$2');
-        }
+    if (v.length > 4) {
+      v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+    } else if (v.length > 2) {
+      v = v.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+    }
 
-        e.target.value = v;
-      });
+    e.target.value = v;
+  });
 
-      function calcularIdade(data){
-        const partes = data.split('/');
-        if (partes.length !== 3) return null;
+  function calcularIdade(data){
+    const partes = data.split('/');
+    if (partes.length !== 3) return null;
 
-        const dia = parseInt(partes[0], 10);
-        const mes = parseInt(partes[1], 10) - 1;
-        const ano = parseInt(partes[2], 10);
+    const dia = parseInt(partes[0], 10);
+    const mes = parseInt(partes[1], 10) - 1;
+    const ano = parseInt(partes[2], 10);
 
-        const nasc = new Date(ano, mes, dia);
-        if (isNaN(nasc.getTime())) return null;
+    const nasc = new Date(ano, mes, dia);
+    if (isNaN(nasc.getTime())) return null;
 
-        const hoje = new Date();
-        let idade = hoje.getFullYear() - nasc.getFullYear();
-        const mesDiff = hoje.getMonth() - nasc.getMonth();
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - nasc.getFullYear();
+    const mesDiff = hoje.getMonth() - nasc.getMonth();
 
-        if (mesDiff < 0 || (mesDiff === 0 && hoje.getDate() < nasc.getDate())) {
-          idade--;
-        }
+    if (mesDiff < 0 || (mesDiff === 0 && hoje.getDate() < nasc.getDate())) {
+      idade--;
+    }
 
-        return idade;
-      }
+    return idade;
+  }
 
-      function faixaEtaria(idade){
-        if (idade <= 24) return 'jovem';
-        if (idade >= 60) return '60+';
-        return 'adulto';
-      }
+  function faixaEtaria(idade){
+    if (idade <= 24) return 'jovem';
+    if (idade >= 60) return '60+';
+    return 'adulto';
+  }
 
-      function deduplicarCards(cards){
-        const vistos = new Set();
+  function deduplicarCards(cards){
+    const vistos = new Set();
 
-        return cards.filter(card => {
-          const chave = card.titulo;
-          if (vistos.has(chave)) return false;
-          vistos.add(chave);
-          return true;
-        });
-      }
+    return cards.filter(card => {
+      const chave = card.titulo;
+      if (vistos.has(chave)) return false;
+      vistos.add(chave);
+      return true;
+    });
+  }
 
-      function montarCards(perfil, idade){
-        const perfilData = GOV_DATA.perfis[perfil];
-        const faixa = faixaEtaria(idade);
+  function montarCards(perfil, idade){
+    const perfilData = GOV_DATA.perfis[perfil];
+    const faixa = faixaEtaria(idade);
 
-        let cards = [];
+    let cards = [];
 
-        if (perfilData && Array.isArray(perfilData.cards)) {
-          cards = cards.concat(perfilData.cards);
-        }
+    if (perfilData && Array.isArray(perfilData.cards)) {
+      cards = cards.concat(perfilData.cards);
+    }
 
-        if (GOV_DATA.faixasEtarias[faixa]) {
-          cards = cards.concat(GOV_DATA.faixasEtarias[faixa].cards);
-        }
+    if (GOV_DATA.faixasEtarias[faixa]) {
+      cards = cards.concat(GOV_DATA.faixasEtarias[faixa].cards);
+    }
 
-        return deduplicarCards(cards);
-      }
+    return deduplicarCards(cards);
+  }
 
-      function criarCard(card, index){
-        const article = document.createElement('article');
+  function criarCard(card, index){
+    const article = document.createElement('article');
 
-        article.className = 'acao-card acao-card--' + (card.cor || 'azul');
-        article.style.animationDelay = (0.05 + index * 0.10) + 's';
+    article.className = 'acao-card acao-card--' + (card.cor || 'azul');
+    article.style.animationDelay = (0.05 + index * 0.10) + 's';
 
-        article.innerHTML = `
-          <div class="acao-card__faixa">
-            <span class="acao-card__emoji">${card.emoji || '📌'}</span>
-            <span class="acao-card__tag">${card.tag || ''}</span>
-          </div>
-          <div class="acao-card__conteudo">
-            <h3>${card.titulo}</h3>
-            <p>${card.texto}</p>
-          </div>
-        `;
+    article.innerHTML = `
+      <div class="acao-card__faixa">
+        <span class="acao-card__emoji">${card.emoji || '📌'}</span>
+        <span class="acao-card__tag">${card.tag || ''}</span>
+      </div>
+      <div class="acao-card__conteudo">
+        <h3>${card.titulo}</h3>
+        <p>${card.texto}</p>
+      </div>
+    `;
 
-        return article;
-      }
+    return article;
+  }
 
-      function renderizarResultado(perfil, estado, idade){
-        const perfilInfo = GOV_DATA.perfis[perfil];
-        const cards = montarCards(perfil, idade);
+  function renderizarResultado(perfil, estado, idade){
+    const perfilInfo = GOV_DATA.perfis[perfil];
+    const cards = montarCards(perfil, idade);
 
-        cardsContainer.innerHTML = '';
+    cardsContainer.innerHTML = '';
 
-        cards.forEach((card, index) => {
-          cardsContainer.appendChild(criarCard(card, index));
-        });
+    cards.forEach((card, index) => {
+      cardsContainer.appendChild(criarCard(card, index));
+    });
 
-        tituloResultado.textContent =
-          perfilInfo.tituloResultado || 'O que o Governo Federal tem para você';
+    tituloResultado.textContent =
+      perfilInfo.tituloResultado || 'O que o Governo Federal tem para você';
 
-        subtituloResultado.textContent = '';
+    subtituloResultado.textContent = `Para quem mora em ${estado}`;
 
-        ultimoResultado = { perfil, estado, idade, cards };
-      }
+    ultimoResultado = { perfil, estado, idade, cards };
+  }
 
-      btnWhatsapp.addEventListener('click', function(){
-        const urlAtual = window.location.href;
+  // 👉 LER URL E CARREGAR DIRETO
+  function carregarDeURL(){
+    const params = new URLSearchParams(window.location.search);
 
-        const topCards = ultimoResultado.cards
-  .slice(0, 3)
-  .map(card => `${card.emoji || '📌'} ${card.titulo}`)
-  .join('\n');
+    const perfil = params.get('perfil');
+    const estado = params.get('estado');
+    const nascimento = params.get('nascimento');
 
-        const perfilInfo = GOV_DATA.perfis[ultimoResultado.perfil];
+    if (!perfil || !estado || !nascimento) return;
 
-const mensagem =
-  `${perfilInfo.emojiPerfil || '📢'} ` +
-  (perfilInfo.tituloCompartilhamento || 'Descobri ações do Governo') +
-  '\n\n' +
-          topCards +
-          '\n\n' +
-          '📍 Estado: ' + ultimoResultado.estado + '\n' +
-          'Acesse: ' + urlAtual;
+    const idade = calcularIdade(nascimento);
+    if (idade === null) return;
 
-        const url = 'https://wa.me/?text=' + encodeURIComponent(mensagem);
-        window.open(url, '_blank');
-      });
+    document.getElementById('perfil').value = perfil;
+    document.getElementById('estado').value = estado;
+    document.getElementById('nascimento').value = nascimento;
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
+    renderizarResultado(perfil, estado, idade);
 
-        const estado = document.getElementById('estado').value;
-        const dataNascimento = document.getElementById('nascimento').value;
-        const perfil = document.getElementById('perfil').value;
+    telaHome.classList.remove('is-active');
+    telaResultado.classList.add('is-active');
+  }
 
-        if (!estado || !dataNascimento || !perfil) {
-          alert('Preencha todos os campos.');
-          return;
-        }
+  // WhatsApp
+  btnWhatsapp.addEventListener('click', function(){
+    const urlAtual = window.location.href;
 
-        const idade = calcularIdade(dataNascimento);
+    const topCards = ultimoResultado.cards
+      .slice(0, 3)
+      .map(card => `${card.emoji || '📌'} ${card.titulo}`)
+      .join('\n');
 
-        if (idade === null || idade < 0 || idade > 120) {
-          alert('Digite uma data válida.');
-          return;
-        }
+    const perfilInfo = GOV_DATA.perfis[ultimoResultado.perfil];
 
-        renderizarResultado(perfil, estado, idade);
+    const mensagem =
+      `👀 Olha isso!\n\n` +
+      `${perfilInfo.emojiPerfil || '📢'} ${perfilInfo.tituloCompartilhamento}\n\n` +
+      `${topCards}\n\n` +
+      `🇧🇷 Isso já está acontecendo no Brasil\n` +
+      `📍 ${ultimoResultado.estado}\n\n` +
+      `🔗 ${urlAtual}`;
 
-        telaHome.classList.remove('is-active');
-        telaResultado.classList.add('is-active');
+    const url = 'https://wa.me/?text=' + encodeURIComponent(mensagem);
+    window.open(url, '_blank');
+  });
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+  // SUBMIT
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
 
-      btnVoltar.addEventListener('click', function(){
-        telaResultado.classList.remove('is-active');
-        telaHome.classList.add('is-active');
+    const estado = document.getElementById('estado').value;
+    const dataNascimento = document.getElementById('nascimento').value;
+    const perfil = document.getElementById('perfil').value;
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    if (!estado || !dataNascimento || !perfil) {
+      alert('Preencha todos os campos.');
+      return;
+    }
 
-    })();
-  </script>
+    const idade = calcularIdade(dataNascimento);
+
+    if (idade === null || idade < 0 || idade > 120) {
+      alert('Digite uma data válida.');
+      return;
+    }
+
+    renderizarResultado(perfil, estado, idade);
+
+    // 👉 atualiza URL
+    const params = new URLSearchParams({
+      perfil,
+      estado,
+      nascimento: dataNascimento
+    });
+
+    const urlComParams = window.location.pathname + '?' + params.toString();
+    window.history.replaceState({}, '', urlComParams);
+
+    telaHome.classList.remove('is-active');
+    telaResultado.classList.add('is-active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  btnVoltar.addEventListener('click', function(){
+    telaResultado.classList.remove('is-active');
+    telaHome.classList.add('is-active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 👉 roda automático ao abrir link
+  carregarDeURL();
+
+})();
+</script>
 </section>
