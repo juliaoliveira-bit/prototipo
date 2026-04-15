@@ -73,27 +73,39 @@
     <div class="gov-resultado">
       <div class="gov-resultado__inner">
 
-        <div class="gov-resultado__topo">
-          <div class="gov-resultado__selo">
-            <img src="selo-07.png" alt="Governo do Brasil do lado do povo brasileiro">
+        <div class="gov-hero">
+          <div class="gov-hero__texto">
+            <div class="gov-hero__marca">
+              <img src="marca(2)_Prancheta 1.png" alt="Governo do Brasil">
+            </div>
+
+            <h2 class="gov-hero__titulo">
+              O Governo do<br>
+              Brasil tem lado.<br>
+              <span>É o lado do<br>povo brasileiro.</span>
+            </h2>
           </div>
 
-          <div class="gov-resultado__intro">
-            <h2 class="gov-resultado__titulo" id="tituloResultado">
-              O que o Governo Federal tem para você
-            </h2>
-            <p class="gov-resultado__sub" id="subtituloResultado"></p>
+          <div class="gov-hero__foto">
+            <img src="estudante_Prancheta 1 cópia.png" alt="">
           </div>
+        </div>
+
+        <div class="gov-resultado__intro">
+          <h2 class="gov-resultado__titulo" id="tituloResultado">
+            O que o Governo Federal tem para você,
+          </h2>
+          <div class="gov-resultado__sub" id="subtituloResultado"></div>
         </div>
 
         <div class="gov-resultado__grid" id="cardsContainer"></div>
 
         <div class="gov-resultado__acoes">
-          <button class="gov-resultado__botao" id="btnWhatsapp">
+          <button class="gov-resultado__botao" id="btnWhatsapp" type="button">
             Compartilhar no WhatsApp
           </button>
 
-          <button class="gov-resultado__botao gov-resultado__botao--sec" id="btnVoltar">
+          <button class="gov-resultado__botao gov-resultado__botao--sec" id="btnVoltar" type="button">
             Voltar
           </button>
         </div>
@@ -103,20 +115,43 @@
   </div>
 
   <style>
+    @font-face{
+      font-family:'Rawline';
+      src:url('https://cdn.jsdelivr.net/gh/govbr-ds/fonts/rawline/Rawline-Regular.woff2') format('woff2');
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+
+    @font-face{
+      font-family:'Rawline';
+      src:url('https://cdn.jsdelivr.net/gh/govbr-ds/fonts/rawline/Rawline-Bold.woff2') format('woff2');
+      font-weight:700;
+      font-style:normal;
+      font-display:swap;
+    }
+
+    @font-face{
+      font-family:'Rawline';
+      src:url('https://cdn.jsdelivr.net/gh/govbr-ds/fonts/rawline/Rawline-ExtraBold.woff2') format('woff2');
+      font-weight:800;
+      font-style:normal;
+      font-display:swap;
+    }
+
     .gov-app{
       --amarelo:#f5cc00;
       --azul:#1f4ea3;
       --azul2:#2f56a6;
-      --azul-claro:#5ea8ff;
-      --verde:#31b34b;
-      --verde-escuro:#12805d;
-      --vermelho:#eb3b2d;
-      --amarelo-card:#d8a300;
+      --azul-card:#003CFF;
+      --verde-card:#00D000;
+      --vermelho-card:#FF0000;
+      --amarelo-card:#FFD000;
       --cinza:#e7e7e7;
       --cinza2:#f3f3f3;
       --borda:#8da0c8;
       --branco:#ffffff;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:'Rawline', Arial, sans-serif;
     }
 
     .gov-app *{ box-sizing:border-box; }
@@ -208,6 +243,7 @@
       outline:none;
       appearance:none;
       -webkit-appearance:none;
+      font-family:'Rawline', Arial, sans-serif;
     }
 
     .gov-field input::placeholder{
@@ -228,7 +264,7 @@
       min-width:490px;
       border:none;
       border-radius:999px;
-      background:var(--verde);
+      background:#31b34b;
       color:var(--branco);
       font-size:32px;
       font-weight:700;
@@ -236,6 +272,7 @@
       cursor:pointer;
       transition:transform .2s ease, filter .2s ease;
       box-shadow:0 6px 10px rgba(0,0,0,0.08);
+      font-family:'Rawline', Arial, sans-serif;
     }
 
     .gov-btn:hover{
@@ -243,202 +280,264 @@
       filter:brightness(1.02);
     }
 
-    .gov-resultado__sub:empty{
-  display:none;
-}
-
     .gov-resultado{
       background:var(--amarelo);
       min-height:100vh;
-      padding:48px 20px 60px;
+      padding:0;
     }
 
     .gov-resultado__inner{
-      max-width:1180px;
+      max-width:430px;
       margin:0 auto;
+      padding:8px 0 36px;
     }
 
-    .gov-resultado__topo{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      gap:18px;
-      margin-bottom:30px;
+    .gov-hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      align-items:stretch;
+      background:#1552f0;
+      overflow:hidden;
+      border:1px solid #111;
     }
 
-    .gov-resultado__selo img{
-      width:100%;
-      max-width:520px;
+    .gov-hero__texto{
+      padding:14px 14px 18px;
+    }
+
+    .gov-hero__marca{
+      margin-bottom:8px;
+    }
+
+    .gov-hero__marca img{
+      width:88px;
       display:block;
-      height:auto;
+    }
+
+    .gov-hero__titulo{
+      margin:0;
+      color:#fff;
+      font-size:24px;
+      line-height:1.02;
+      font-weight:800;
+      letter-spacing:-0.4px;
+    }
+
+    .gov-hero__titulo span{
+      color:#f5cc00;
+    }
+
+    .gov-hero__foto img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .gov-resultado__intro{
+      text-align:center;
+      padding:18px 18px 10px;
     }
 
     .gov-resultado__titulo{
-      margin:0;
-      font-size:46px;
-      line-height:1.02;
-      color:var(--azul);
-      max-width:900px;
+      margin:0 0 12px;
+      font-size:26px;
+      line-height:1.06;
+      color:#000;
+      font-weight:800;
+      letter-spacing:-0.3px;
     }
 
     .gov-resultado__sub{
-      margin:0;
-      max-width:760px;
-      font-size:40px;
-      line-height:1.35;
-      color:var(--azul);
+      display:flex;
+      justify-content:center;
+      margin:0 0 14px;
+    }
+
+    .gov-resultado__sub:empty{
+      display:none;
+    }
+
+    .gov-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-width:160px;
+      background:#efefef;
+      border:1.5px solid #9f9f9f;
+      border-radius:999px;
+      padding:7px 18px;
+      font-size:17px;
+      font-weight:700;
+      color:#1f1f1f;
+      box-shadow:0 1px 0 rgba(0,0,0,.15);
     }
 
     .gov-resultado__grid{
       display:grid;
       grid-template-columns:1fr;
-      gap:28px;
-      max-width:780px;
+      gap:16px;
+      max-width:280px;
       margin:0 auto;
-      align-items:stretch;
     }
 
     .acao-card{
-      background:#fff;
-      border-radius:36px;
+      background:#efefef;
+      border-radius:18px;
       overflow:hidden;
-      box-shadow:0 14px 32px rgba(0,0,0,.10);
+      box-shadow:none;
       display:flex;
       flex-direction:column;
-      opacity:0;
-      transform:translateY(28px);
-      animation:cardEntrada .7s ease forwards;
-      transition:transform .25s ease, box-shadow .25s ease;
+      opacity:1;
+      transform:none;
+      animation:none;
+      border:1.5px solid #a9a9a9;
     }
 
     .acao-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 18px 36px rgba(0,0,0,.12);
-    }
-
-    @keyframes cardEntrada{
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+      transform:none;
+      box-shadow:none;
     }
 
     .acao-card__faixa{
       display:flex;
       align-items:center;
-      gap:12px;
-      padding:20px 24px;
-      min-height:72px;
+      gap:8px;
+      padding:10px 14px;
+      min-height:auto;
       color:#fff;
-      font-weight:700;
-      font-size:20px;
+      font-weight:800;
+      font-size:15px;
       line-height:1;
+      text-transform:uppercase;
+      border-radius:18px 18px 0 0;
     }
 
     .acao-card__emoji{
-      font-size:34px;
+      font-size:20px;
       line-height:1;
       flex-shrink:0;
     }
 
     .acao-card__tag{
       display:inline-block;
-      font-size:20px;
-      line-height:1.1;
+      font-size:15px;
+      line-height:1;
+      letter-spacing:0;
     }
 
     .acao-card__conteudo{
-      padding:28px 28px 32px;
-      color:var(--azul);
-      background:#fff;
+      padding:16px 18px 18px;
+      color:#000;
+      background:#efefef;
     }
 
     .acao-card__conteudo h3{
-      margin:0 0 14px;
-      font-size:34px;
-      line-height:1.1;
+      margin:0 0 6px;
+      font-size:18px;
+      line-height:1.08;
       font-weight:800;
+      color:#1552f0;
+      letter-spacing:-0.2px;
     }
 
     .acao-card__conteudo p{
       margin:0;
-      font-size:22px;
-      line-height:1.4;
+      font-size:15px;
+      line-height:1.15;
+      color:#111;
     }
 
-    .acao-card--azul .acao-card__faixa{ background:var(--azul); }
-    .acao-card--verde .acao-card__faixa{ background:var(--verde); }
-    .acao-card--amarelo .acao-card__faixa{ background:var(--amarelo-card); }
-    .acao-card--vermelho .acao-card__faixa{ background:var(--vermelho); }
-    .acao-card--azul-claro .acao-card__faixa{ background:var(--azul-claro); }
-    .acao-card--verde-escuro .acao-card__faixa{ background:var(--verde-escuro); }
+    .acao-card__conteudo strong{
+      font-weight:800;
+    }
+
+    .acao-card--azul .acao-card__faixa{ background:#003CFF; }
+    .acao-card--verde .acao-card__faixa{ background:#00D000; }
+    .acao-card--amarelo .acao-card__faixa{ background:#FFD000; color:#111; }
+    .acao-card--vermelho .acao-card__faixa{ background:#FF0000; }
+    .acao-card--azul-claro .acao-card__faixa{ background:#003CFF; }
+    .acao-card--verde-escuro .acao-card__faixa{ background:#00D000; }
 
     .gov-resultado__acoes{
       display:flex;
       justify-content:center;
-      gap:16px;
-      margin-top:34px;
+      gap:12px;
+      margin-top:20px;
       flex-wrap:wrap;
+      padding:0 16px;
     }
 
     .gov-resultado__botao{
       border:none;
       border-radius:999px;
-      padding:16px 28px;
-      font-size:22px;
+      padding:14px 18px;
+      font-size:16px;
       font-weight:700;
       cursor:pointer;
-      background:var(--verde);
+      background:#31b34b;
       color:#fff;
+      width:100%;
+      max-width:280px;
+      font-family:'Rawline', Arial, sans-serif;
     }
 
     .gov-resultado__botao--sec{
-      background:var(--azul);
+      background:#1f4ea3;
     }
 
-    @media (max-width: 980px){
-      .gov-home__topo-img img{
-        max-width:820px;
+    @media (min-width: 641px){
+      .gov-resultado__inner{
+        max-width:520px;
       }
 
-      .gov-field{
-        grid-template-columns:1fr;
-        gap:10px;
+      .gov-hero{
+        grid-template-columns:1fr 130px;
       }
 
-      .gov-field label{
-        font-size:40px;
+      .gov-hero__titulo{
+        font-size:34px;
+      }
+
+      .gov-hero__marca img{
+        width:110px;
       }
 
       .gov-resultado__titulo{
         font-size:38px;
       }
 
-      .gov-resultado__sub{
-        font-size:30px;
+      .gov-pill{
+        font-size:24px;
+        min-width:210px;
+        padding:10px 24px;
       }
 
       .gov-resultado__grid{
-        gap:20px;
-        max-width:760px;
+        max-width:360px;
       }
 
       .acao-card__faixa{
-        min-height:64px;
-        padding:16px 20px;
+        font-size:20px;
+        padding:14px 18px;
+      }
+
+      .acao-card__emoji{
+        font-size:28px;
       }
 
       .acao-card__tag{
-        font-size:18px;
+        font-size:20px;
       }
 
       .acao-card__conteudo h3{
-        font-size:34px;
+        font-size:30px;
       }
 
       .acao-card__conteudo p{
         font-size:24px;
+        line-height:1.22;
       }
     }
 
@@ -461,7 +560,6 @@
         width:100%;
         max-width:100%;
         min-width:0;
-        display:block;
         margin:0 auto;
       }
 
@@ -501,91 +599,6 @@
         padding:17px 18px;
         bottom:-18px;
       }
-
-      .gov-resultado{
-        padding:22px 14px 36px;
-      }
-
-      .gov-resultado__inner{
-        max-width:430px;
-      }
-
-      .gov-resultado__topo{
-        gap:12px;
-        margin-bottom:18px;
-      }
-
-      .gov-resultado__selo img{
-        width:100%;
-        max-width:100%;
-        display:block;
-        margin:0 auto;
-      }
-
-      .gov-resultado__titulo{
-        font-size:28px;
-        line-height:1.08;
-        max-width:320px;
-        margin:0 auto 8px;
-      }
-
-      .gov-resultado__sub{
-        font-size:30px;
-        line-height:1.3;
-        max-width:300px;
-      }
-
-      .gov-resultado__grid{
-        gap:16px;
-        max-width:100%;
-      }
-
-      .acao-card{
-        width:100%;
-        max-width:100%;
-        margin:0 auto;
-        border-radius:24px;
-      }
-
-      .acao-card__faixa{
-        padding:14px 16px;
-        min-height:54px;
-        font-size:14px;
-      }
-
-      .acao-card__emoji{
-        font-size:22px;
-      }
-
-      .acao-card__tag{
-        font-size:14px;
-      }
-
-      .acao-card__conteudo{
-        padding:16px 16px 18px;
-      }
-
-      .acao-card__conteudo h3{
-        font-size:26px;
-        line-height:1.08;
-        margin:0 0 10px;
-      }
-
-      .acao-card__conteudo p{
-        font-size:18px;
-        line-height:1.3;
-      }
-
-      .gov-resultado__acoes{
-        gap:12px;
-        margin-top:24px;
-      }
-
-      .gov-resultado__botao{
-        width:100%;
-        max-width:320px;
-        font-size:18px;
-      }
     }
   </style>
 
@@ -594,16 +607,15 @@
   "perfis": {
     "estudante": {
       "emojiPerfil": "🎓",
-      "tituloResultado": "O que o Governo Federal tem para você, estudante",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para estudantes:",
-      "subtitulo": "Selecionamos ações de educação, permanência na escola e ampliação de oportunidades.",
       "cards": [
         {
           "tag": "Incentivo",
           "emoji": "🎓",
           "cor": "azul",
           "titulo": "O Pé-de-Meia",
-          "texto": "está incentivando <strong> 4 milhões </strong> de adolescentes a estudar"
+          "texto": "está incentivando <strong>4 milhões</strong> de adolescentes a estudar"
         },
         {
           "tag": "Alimentação",
@@ -644,9 +656,8 @@
     },
     "trabalhador": {
       "emojiPerfil": "💼",
-      "tituloResultado": "O que o Governo Federal tem para você, trabalhador",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para trabalhadores:",
-      "subtitulo": "Ações voltadas à renda, emprego e alívio no orçamento.",
       "cards": [
         {
           "tag": "Emprego",
@@ -680,9 +691,8 @@
     },
     "agricultor": {
       "emojiPerfil": "🌱",
-      "tituloResultado": "O que o Governo Federal tem para você, agricultor",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para agricultores:",
-      "subtitulo": "Ações voltadas ao campo, produção e crédito.",
       "cards": [
         {
           "tag": "Crédito",
@@ -723,9 +733,8 @@
     },
     "mulher": {
       "emojiPerfil": "👩",
-      "tituloResultado": "O que o Governo Federal tem para você, mulher",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para mulheres:",
-      "subtitulo": "Proteção, saúde e políticas públicas para mulheres.",
       "cards": [
         {
           "tag": "Proteção",
@@ -758,10 +767,9 @@
       ]
     },
     "motorista": {
-       "emojiPerfil": "🪪",
-      "tituloResultado": "O que o Governo Federal tem para você, motorista",
+      "emojiPerfil": "🪪",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para motoristas:",
-      "subtitulo": "Facilidade, economia e mobilidade.",
       "cards": [
         {
           "tag": "CNH",
@@ -787,10 +795,9 @@
       ]
     },
     "geral": {
-        "emojiPerfil": "🇧🇷",
-      "tituloResultado": "O que o Governo Federal tem para você",
+      "emojiPerfil": "🇧🇷",
+      "tituloResultado": "O que o Governo Federal tem para você,",
       "tituloCompartilhamento": "Descobri ações do Governo para a população:",
-      "subtitulo": "Principais ações que impactam o dia a dia da população.",
       "cards": [
         {
           "tag": "Saúde",
@@ -873,80 +880,236 @@
     }
   }
 }
-</script>
+  </script>
 
-<script>
-(function(){
+  <script>
+    (function(){
 
-  const form = document.getElementById('govForm');
-  const nascimento = document.getElementById('nascimento');
-  const telaHome = document.getElementById('telaHome');
-  const telaResultado = document.getElementById('telaResultado');
-  const btnVoltar = document.getElementById('btnVoltar');
-  const btnWhatsapp = document.getElementById('btnWhatsapp');
-  const cardsContainer = document.getElementById('cardsContainer');
-  const tituloResultado = document.getElementById('tituloResultado');
-  const subtituloResultado = document.getElementById('subtituloResultado');
+      const form = document.getElementById('govForm');
+      const nascimento = document.getElementById('nascimento');
+      const telaHome = document.getElementById('telaHome');
+      const telaResultado = document.getElementById('telaResultado');
+      const btnVoltar = document.getElementById('btnVoltar');
+      const btnWhatsapp = document.getElementById('btnWhatsapp');
+      const cardsContainer = document.getElementById('cardsContainer');
+      const tituloResultado = document.getElementById('tituloResultado');
+      const subtituloResultado = document.getElementById('subtituloResultado');
 
-  let ultimoResultado = {
-    perfil: '',
-    estado: '',
-    idade: 0,
-    cards: []
-  };
+      let ultimoResultado = {
+        perfil: '',
+        estado: '',
+        idade: 0,
+        cards: []
+      };
 
-  function getGovData(){
-    try {
-      const raw = document.getElementById('govDataJson').textContent.trim();
-      return JSON.parse(raw);
-    } catch(e){
-      console.error('Erro no JSON', e);
-      return { perfis:{}, faixasEtarias:{} };
-    }
-  }
+      function getGovData(){
+        try {
+          const raw = document.getElementById('govDataJson').textContent.trim();
+          return JSON.parse(raw);
+        } catch(e){
+          console.error('Erro no JSON', e);
+          return { perfis:{}, faixasEtarias:{} };
+        }
+      }
 
-  const GOV_DATA = getGovData();
+      const GOV_DATA = getGovData();
 
-  // máscara de data
-  nascimento.addEventListener('input', function(e){
-    let v = e.target.value.replace(/\D/g, '').slice(0, 8);
+      nascimento.addEventListener('input', function(e){
+        let v = e.target.value.replace(/\D/g, '').slice(0, 8);
 
-    if (v.length > 4) {
-      v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
-    } else if (v.length > 2) {
-      v = v.replace(/(\d{2})(\d{0,2})/, '$1/$2');
-    }
+        if (v.length > 4) {
+          v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+        } else if (v.length > 2) {
+          v = v.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+        }
 
-    e.target.value = v;
-  });
+        e.target.value = v;
+      });
 
-  function calcularIdade(data){
-    const partes = data.split('/');
-    if (partes.length !== 3) return null;
+      function calcularIdade(data){
+        const partes = data.split('/');
+        if (partes.length !== 3) return null;
 
-    const dia = parseInt(partes[0], 10);
-    const mes = parseInt(partes[1], 10) - 1;
-    const ano = parseInt(partes[2], 10);
+        const dia = parseInt(partes[0], 10);
+        const mes = parseInt(partes[1], 10) - 1;
+        const ano = parseInt(partes[2], 10);
 
-    const nasc = new Date(ano, mes, dia);
-    if (isNaN(nasc.getTime())) return null;
+        const nasc = new Date(ano, mes, dia);
+        if (isNaN(nasc.getTime())) return null;
 
-    const hoje = new Date();
-    let idade = hoje.getFullYear() - nasc.getFullYear();
-    const mesDiff = hoje.getMonth() - nasc.getMonth();
+        const hoje = new Date();
+        let idade = hoje.getFullYear() - nasc.getFullYear();
+        const mesDiff = hoje.getMonth() - nasc.getMonth();
 
-    if (mesDiff < 0 || (mesDiff === 0 && hoje.getDate() < nasc.getDate())) {
-      idade--;
-    }
+        if (mesDiff < 0 || (mesDiff === 0 && hoje.getDate() < nasc.getDate())) {
+          idade--;
+        }
 
-    return idade;
-  }
+        return idade;
+      }
 
-  function faixaEtaria(idade){
-    if (idade <= 24) return 'jovem';
-    if (idade >= 60) return '60+';
-    return 'adulto';
-  }
+      function faixaEtaria(idade){
+        if (idade <= 24) return 'jovem';
+        if (idade >= 60) return '60+';
+        return 'adulto';
+      }
+
+      function deduplicarCards(cards){
+        const vistos = new Set();
+
+        return cards.filter(card => {
+          const chave = card.titulo;
+          if (vistos.has(chave)) return false;
+          vistos.add(chave);
+          return true;
+        });
+      }
+
+      function montarCards(perfil, idade){
+        const perfilData = GOV_DATA.perfis[perfil];
+        const faixa = faixaEtaria(idade);
+
+        let cards = [];
+
+        if (perfilData && Array.isArray(perfilData.cards)) {
+          cards = cards.concat(perfilData.cards);
+        }
+
+        if (GOV_DATA.faixasEtarias[faixa]) {
+          cards = cards.concat(GOV_DATA.faixasEtarias[faixa].cards);
+        }
+
+        return deduplicarCards(cards);
+      }
+
+      function criarCard(card){
+        const article = document.createElement('article');
+
+        article.className = 'acao-card acao-card--' + (card.cor || 'azul');
+
+        article.innerHTML = `
+          <div class="acao-card__faixa">
+            <span class="acao-card__emoji">${card.emoji || '📌'}</span>
+            <span class="acao-card__tag">${card.tag || ''}</span>
+          </div>
+          <div class="acao-card__conteudo">
+            <h3>${card.titulo}</h3>
+            <p>${card.texto}</p>
+          </div>
+        `;
+
+        return article;
+      }
+
+      function renderizarResultado(perfil, estado, idade){
+        const perfilInfo = GOV_DATA.perfis[perfil];
+        const cards = montarCards(perfil, idade);
+
+        cardsContainer.innerHTML = '';
+
+        cards.forEach((card) => {
+          cardsContainer.appendChild(criarCard(card));
+        });
+
+        tituloResultado.textContent =
+          perfilInfo.tituloResultado || 'O que o Governo Federal tem para você,';
+
+        subtituloResultado.innerHTML = `<span class="gov-pill">📍 ${estado}</span>`;
+
+        ultimoResultado = { perfil, estado, idade, cards };
+      }
+
+      function carregarDeURL(){
+        const params = new URLSearchParams(window.location.search);
+
+        const perfil = params.get('perfil');
+        const estado = params.get('estado');
+        const nascimento = params.get('nascimento');
+
+        if (!perfil || !estado || !nascimento) return;
+
+        const idade = calcularIdade(nascimento);
+        if (idade === null) return;
+
+        document.getElementById('perfil').value = perfil;
+        document.getElementById('estado').value = estado;
+        document.getElementById('nascimento').value = nascimento;
+
+        renderizarResultado(perfil, estado, idade);
+
+        telaHome.classList.remove('is-active');
+        telaResultado.classList.add('is-active');
+      }
+
+      btnWhatsapp.addEventListener('click', function(){
+        const urlAtual = window.location.href;
+
+        const topCards = ultimoResultado.cards
+          .slice(0, 3)
+          .map(card => `${card.emoji || '📌'} ${card.titulo}`)
+          .join('\n');
+
+        const perfilInfo = GOV_DATA.perfis[ultimoResultado.perfil];
+
+        const mensagem =
+          `👀 Olha isso!\n\n` +
+          `${perfilInfo.emojiPerfil || '📢'} ${perfilInfo.tituloCompartilhamento}\n\n` +
+          `${topCards}\n\n` +
+          `🇧🇷 Isso já está acontecendo no Brasil\n` +
+          `📍 ${ultimoResultado.estado}\n\n` +
+          `🔗 ${urlAtual}`;
+
+        const url = 'https://wa.me/?text=' + encodeURIComponent(mensagem);
+        window.open(url, '_blank');
+      });
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const estado = document.getElementById('estado').value;
+        const dataNascimento = document.getElementById('nascimento').value;
+        const perfil = document.getElementById('perfil').value;
+
+        if (!estado || !dataNascimento || !perfil) {
+          alert('Preencha todos os campos.');
+          return;
+        }
+
+        const idade = calcularIdade(dataNascimento);
+
+        if (idade === null || idade < 0 || idade > 120) {
+          alert('Digite uma data válida.');
+          return;
+        }
+
+        renderizarResultado(perfil, estado, idade);
+
+        const params = new URLSearchParams({
+          perfil,
+          estado,
+          nascimento: dataNascimento
+        });
+
+        const urlComParams = window.location.pathname + '?' + params.toString();
+        window.history.replaceState({}, '', urlComParams);
+
+        telaHome.classList.remove('is-active');
+        telaResultado.classList.add('is-active');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      btnVoltar.addEventListener('click', function(){
+        telaResultado.classList.remove('is-active');
+        telaHome.classList.add('is-active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      carregarDeURL();
+
+    })();
+  </script>
+</section>
 
   function deduplicarCards(cards){
     const vistos = new Set();
